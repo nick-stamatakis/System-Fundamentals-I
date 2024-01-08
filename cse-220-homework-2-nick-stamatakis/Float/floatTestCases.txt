@@ -1,0 +1,130 @@
+    char sign_bit;
+    char exponent;
+    unsigned int fraction;
+    float result;
+
+    // Test Case 1
+    sign_bit = 0x00;
+    exponent = 0x81;
+    fraction = 0x300000;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 1: Expected: %f, Actual: %f\n", 5.5, (double)result);
+
+    // Test Case 2
+    sign_bit = 0x01;
+    exponent = 0x81;
+    fraction = 0x300000;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 2: Expected: %f, Actual: %f\n", -5.5, (double)result);
+
+    // Test Case 3
+    sign_bit = 0x00;
+    exponent = 0x7F;
+    fraction = 0x200000;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 3: Expected: %f, Actual: %f\n", 1.25, (double)result);
+
+    // Test Case 4
+    sign_bit = 0x01;
+    exponent = 0x7F;
+    fraction = 0x200000;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 4: Expected: %f, Actual: %f\n", -1.25, (double)result);
+
+    // Test Case 5
+    sign_bit = 0x00;
+    exponent = 0x76;
+    fraction = 0x299B6F;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 5: Expected: %f, Actual: %f\n", 0.002588, (double)result);
+
+    // Test Case 6
+    sign_bit = 0x01;
+    exponent = 0x76;
+    fraction = 0x299B6F;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 6: Expected: %f, Actual: %f\n", -0.002588, (double)result);
+
+    // Test Case 7
+    sign_bit = 0x00;
+    exponent = 0x89;
+    fraction = 0xABCDEF;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 7: Expected: %f, Actual: %f\n", 1374.44, (double)result);
+
+    // Test Case 8
+    sign_bit = 0x01;
+    exponent = 0x89;
+    fraction = 0xABCDEF;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 8: Expected: %f, Actual: %f\n", -1374.44, (double)result);
+
+    // Test Case 9
+    sign_bit = 0x00;
+    exponent = 0x90;
+    fraction = 0x7973C0;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 9: Expected: %f, Actual: %f\n", 255439.0, (double)result);
+
+    // Test Case 10
+    sign_bit = 0x01;
+    exponent = 0x90;
+    fraction = 0x7973C0;
+    result = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 10: Expected: %f, Actual: %f\n", -255439.0, (double)result);
+
+    // Test Case 1: Smallest Positive Value (Normalized)
+    sign_bit = 0;
+    exponent = 1;
+    fraction = 0;
+    float result1 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 1: %.8e\n", (double)result1);
+
+    // Test Case 2: Smallest Negative Value (Normalized)
+    sign_bit = 1;
+    exponent = 1;
+    fraction = 0;
+    float result2 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 2: %.8e\n", (double)result2);
+
+    // Test Case 3: Largest Positive Value (Normalized)
+    sign_bit = 0;
+    exponent = 254;
+    fraction = 0x7FFFFF;
+    float result3 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 3: %.8e\n", (double)result3);
+
+    // Test Case 4: Largest Negative Value (Normalized)
+    sign_bit = 1;
+    exponent = 254;
+    fraction = 0x7FFFFF;
+    float result4 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 4: %.8e\n", (double)result4);
+
+    // Test Case 5: Positive Infinity
+    sign_bit = 0;
+    exponent = 255;
+    fraction = 0;
+    float result5 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 5: %.8e\n", (double)result5);
+
+    // Test Case 6: Negative Infinity
+    sign_bit = 1;
+    exponent = 255;
+    fraction = 0;
+    float result6 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 6: %.8e\n", (double)result6);
+
+    // Test Case 7: NaN (Not-a-Number)
+    sign_bit = 0;
+    exponent = 255;
+    fraction = 1; // Non-zero fraction for NaN
+    float result7 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 7: %.8e\n", (double)result7);
+
+    // Test Case 8: Zero
+    sign_bit = 0;
+    exponent = 0;
+    fraction = 0;
+    float result8 = construct_float_sf(sign_bit, exponent, fraction);
+    printf("Test Case 8: %.8e\n", (double)result8);

@@ -1,0 +1,187 @@
+    /* Test Cases for GetBit */
+
+    // Test case 0: 2nd index of 12 (1100)
+    printf("Result 0: %d\n", GetBit(12, 2)); // Expected Output: 1
+    // Test case 1: Get the LSB of 0
+    printf("Result 1: %d\n", GetBit(0, 0)); // Expected output: 0
+    // Test case 2: Get bit at position 5 of 42
+    printf("Result 2: %d\n", GetBit(42, 3)); // Expected output: 1
+    // Test case 3: Get bit at position 0 of 255
+    printf("Result 3: %d\n", GetBit(255, 0)); // Expected output: 1
+    // Test case 4: Get the LSB of -1
+    printf("Result 4: %d\n", GetBit(-1, 0)); // Expected output: 1
+    // Test case 5: Get the MSB of -1
+    printf("Result 5: %d\n", GetBit(-1, 31)); // Expected output: 1
+    // Test case 6: Get the MSB of -2147483648
+    printf("Result 6: %d\n", GetBit(0x80000000, 31)); // Expected output: 1
+
+
+    /* Test Cases for SetBit */
+
+    // Test Case 1: Setting a bit from 0 to 1
+    printf("Test Case 1: Expected result: 14, Actual result: %d\n", SetBit(10, 2));
+    printf("%d\n",(SetBit(10, 2) == 14));
+
+    // Test Case 2: Setting a bit from 1 to 1 (no change)
+    printf("Test Case 2: Expected result: 7, Actual result: %d\n", SetBit(7, 1));
+    printf("%d\n",(SetBit(7, 1) == 7));
+
+    // Test Case 3: Setting a bit from 0 to 1 at the rightmost position
+    printf("Test Case 3: Expected result: 5, Actual result: %d\n", SetBit(5, 0));
+    printf("%d\n",(SetBit(5, 0) == 5));
+
+    // Test Case 4: Setting a bit from 0 to 1 at the leftmost position
+    printf("Test Case 4: Expected result: 10, Actual result: %d\n", SetBit(2, 3));
+    printf("%d\n",(SetBit(2, 3) == 10));
+
+    // Test Case 5: Setting a bit from 0 to 1 in a negative number
+    printf("Test Case 5: Expected result: -7, Actual result: %d\n", SetBit(-7, 4));
+    printf("%d\n",(SetBit(-7, 4) == -7));
+
+    // Test Case 6: Setting a bit at a high position
+    printf("Test Case 6: Expected result: -2147483648, Actual result: %d\n", SetBit(0, 31));
+    printf("%d\n",(SetBit(0, 31) == 2147483648));
+    // Test Case 7: 1
+    printf("Test Case 6: Expected result: idk, Actual result: %d\n", SetBit(1, 31));
+
+
+    /* Test cases for ClearBit*/
+
+    // Test Case 1: Clearing a bit at position 0
+    int num1 = 10; // Binary: 1010
+    int pos1 = 0;
+    int expected1 = 10; // The bit at position 0 is already 0
+    printf("Test Case 1: ClearBit(%d, %d) = %d (Expected: %d)\n", num1, pos1, ClearBit(num1, pos1), expected1);
+
+    // Test Case 2: Clearing a bit at position 2
+    int num2 = 15; // Binary: 1111
+    int pos2 = 2;
+    int expected2 = 11; // Binary: 1011
+    printf("Test Case 2: ClearBit(%d, %d) = %d (Expected: %d)\n", num2, pos2, ClearBit(num2, pos2), expected2);
+
+    // Test Case 3: Clearing a bit at the most significant position
+    int num3 = 255; // Binary: 11111111
+    int pos3 = 7;
+    int expected3 = 127; // Binary: 01111111
+    printf("Test Case 3: ClearBit(%d, %d) = %d (Expected: %d)\n", num3, pos3, ClearBit(num3, pos3), expected3);
+
+    // Test Case 4: Clearing a bit at position 1
+    int num4 = 6; // Binary: 0110
+    int pos4 = 1;
+    int expected4 = 4; // Binary: 0100
+    printf("Test Case 4: ClearBit(%d, %d) = %d (Expected: %d)\n", num4, pos4, ClearBit(num4, pos4), expected4);
+
+    // Test Case 5: Clearing a bit at position 3
+    int num5 = 8; // Binary: 1000
+    int pos5 = 3;
+    int expected5 = 0; // Binary: 0000
+    printf("Test Case 5: ClearBit(%d, %d) = %d (Expected: %d)\n", num5, pos5, ClearBit(num5, pos5), expected5);
+
+    // Additional Test Cases
+
+    // Test Case 6: Clearing a bit at the least significant position
+    int num6 = 9; // Binary: 1001
+    int pos6 = 0;
+    int expected6 = 8; // Binary: 1000
+    printf("Test Case 6: ClearBit(%d, %d) = %d (Expected: %d)\n", num6, pos6, ClearBit(num6, pos6), expected6);
+
+    // Test Case 7: Clearing a bit in a negative number
+    int num7 = -16; // Binary: 11111111111111111111111111110000
+    int pos7 = 4;
+    int expected7 = -32; // Binary: 11111111111111111111111111100000
+    printf("Test Case 7: ClearBit(%d, %d) = %d (Expected: %d)\n", num7, pos7, ClearBit(num7, pos7), expected7);
+
+    // Test Case 8: Clearing a bit in a negative number
+    int num8 = 1; // Binary:
+    int pos8 = 0;
+    int expected8 = 0; // Binary:
+    printf("Test Case 7: ClearBit(%d, %d) = %d (Expected: %d)\n", num8, pos8, ClearBit(num8, pos8), expected8);
+
+    /* Test Cases for ReverseBit*/
+    int testCases[] = {0, 1, 4,8, -1, 123, -123, 2147483647, -2147483648};
+    int numTests = sizeof(testCases) / sizeof(testCases[0]);
+
+    for (int i = 0; i < numTests; i++) {
+        int num = testCases[i];
+        int reversed = Reversbit(num);
+
+        printf("Original number: %11d (0x%08X)\n", num, num);
+        printf("Reversed number: %11d (0x%08X)\n", reversed, reversed);
+        printf("--------------------------------------\n");
+    }
+
+    /*CountBit Testing*/
+
+    int num;
+    int onesCount;
+
+    // Test Case 1: Zero input
+    num = 0;
+    onesCount = CountBit(num);
+    printf("Test Case 1: Number of ones in %d is %d\n", num, onesCount);
+
+    // Test Case 2: All ones input
+    num = -1;
+    onesCount = CountBit(num);
+    printf("Test Case 2: Number of ones in %d is %d\n", num, onesCount);
+
+    // Test Case 3: Single one in the least significant bit
+    num = 1;
+    onesCount = CountBit(num);
+    printf("Test Case 3: Number of ones in %d is %d\n", num, onesCount);
+
+    // Test Case 4: Single one in the most significant bit
+    num = (1 << 31);
+    onesCount = CountBit(num);
+    printf("Test Case 4: Number of ones in %d is %d\n", num, onesCount);
+
+    // Test Case 5: Random integer with a few ones
+    num = 0b11011010;
+    onesCount = CountBit(num);
+    printf("Test Case 5: Number of ones in %d is %d\n", num, onesCount);
+
+    // Test Case 6: Large integer with many ones
+    num = 0xFFFFFFFF;
+    onesCount = CountBit(num);
+    printf("Test Case 6: Number of ones in %d is %d\n", num, onesCount);
+
+    // Test Case 7: Negative integer with ones in its binary representation
+    num = -42;
+    onesCount = CountBit(num);
+    printf("Test Case 7: Number of ones in %d is %d\n", num, onesCount);
+
+    // Test Case 8: A mix of zeros and ones
+    num = 0b10101010;
+    onesCount = CountBit(num);
+    printf("Test Case 8: Number of ones in %d is %d\n", num, onesCount);
+
+    /*PowerOfTwo Function Testing*/
+
+    // Test cases where the input is a power of two (should return 1)
+    printf("Testing with powers of two:\n");
+    printf("PowerOfTwo(1) = %d\n", PowerofTwo(1));   // 2^0 = 1
+    printf("PowerOfTwo(2) = %d\n", PowerofTwo(2));   // 2^1 = 2
+    printf("PowerOfTwo(4) = %d\n", PowerofTwo(4));   // 2^2 = 4
+    printf("PowerOfTwo(8) = %d\n", PowerofTwo(8));   // 2^3 = 8
+    printf("PowerOfTwo(16) = %d\n", PowerofTwo(16)); // 2^4 = 16
+    printf("\n");
+
+    // Test cases where the input is not a power of two (should return 0)
+    printf("Testing with non-powers of two:\n");
+    printf("PowerOfTwo(0) = %d\n", PowerofTwo(0));       // Not a power of two
+    printf("PowerOfTwo(3) = %d\n", PowerofTwo(3));       // Not a power of two
+    printf("PowerOfTwo(5) = %d\n", PowerofTwo(5));       // Not a power of two
+    printf("PowerOfTwo(7) = %d\n", PowerofTwo(7));       // Not a power of two
+    printf("PowerOfTwo(10) = %d\n", PowerofTwo(10));     // Not a power of two
+    printf("PowerOfTwo(15) = %d\n", PowerofTwo(15));     // Not a power of two
+    printf("PowerOfTwo(17) = %d\n", PowerofTwo(17));     // Not a power of two
+    printf("PowerOfTwo(100) = %d\n", PowerofTwo(100));   // Not a power of two
+    printf("PowerOfTwo(1023) = %d\n", PowerofTwo(1023)); // Not a power of two
+    printf("\n");
+
+    // Test cases where the input is a large power of two
+    printf("Testing with large powers of two:\n");
+    printf("PowerOfTwo(2048) = %d\n", PowerofTwo(2048));   // 2^11 = 2048
+    printf("PowerOfTwo(8192) = %d\n", PowerofTwo(8192));   // 2^13 = 8192
+    printf("PowerOfTwo(32768) = %d\n", PowerofTwo(32768)); // 2^15 = 32768
+    printf("\n");

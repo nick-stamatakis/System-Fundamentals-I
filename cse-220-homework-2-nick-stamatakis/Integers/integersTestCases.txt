@@ -1,0 +1,29 @@
+/*
+ *  GIVEN TEST CASES
+    repr_convert('S', '2', 0x80000001); //ffffffff
+    repr_convert('S', '2', 0x80000000); //00000000
+    repr_convert('2', '2', 0x59f2ca50); //59f2ca50
+    repr_convert('F', '2', 0x00394812); //error
+    repr_convert('2', 'S', 0x80000000); //undefined
+
+    MY TEST CASES
+    repr_convert('2', 'S', 0x00000001); // Positive number case
+    repr_convert('2', '2', 0x00000000); // Zero case
+    repr_convert('2', 'S', 0x7FFFFFFF); // Positive maximum value in Two's Complement,  Expected Output: "7fffffff"
+    repr_convert('S', '2', 0x00000000); // Zero in Sign/Magnitude,  Expected Output: "00000000"
+    repr_convert('S', '2', 0x7FFFFFFF); // Positive maximum value in Sign/Magnitude, Expected Output: "7fffffff"
+    repr_convert('2', '2', 0xFFFFFFFF); // Largest negative value in Two's Complement, Expected Output: "ffffffff"
+    repr_convert('2', 'S', 0xFFFFFFFF); // Largest negative value in Two's Complement to Sign/Magnitude, Expected Output: "80000001"
+    repr_convert('2', 'S', 0x00000001); // Positive one in Two's Complement Expected Output: "00000001"
+    repr_convert('S', '2', 0x00000001); // Positive one in Sign/Magnitude, Expected Output: "00000001"
+    repr_convert('2', '2', 0x0000000A); // Positive ten in Two's Complement, Expected Output: "0000000A"
+    repr_convert('S', 'S', 0x0000000A); // Positive ten in Sign/Magnitude,Expected Output: "0000000A"
+    repr_convert('S', 'S', 0x40000000); // Largest positive value in Sign/Magnitude, Expected Output: "40000000"
+    repr_convert('S', '2', 0x40000000); // Largest positive value in Sign/Magnitude to Two's Complement, Expected Output: "40000000"
+    repr_convert('2', 'S', 0xFFFFFFFE); // Maximum positive value in Two's Complement (without sign bit),Expected Output: "80000002"
+    repr_convert('S', '2', 0xFFFFFFFE); // Maximum positive value in Sign/Magnitude (without sign bit), Expected Output: "80000002"
+    repr_convert('2', 'S', 0x00000002); // Smallest positive value in Two's Complement (non-zero),Expected Output: "00000002"
+    repr_convert('S', '2', 0x00000002); // Smallest positive value in Sign/Magnitude (non-zero),Expected Output: "00000002"
+    repr_convert('X', '2', 0x12345678); // Invalid source representation, Expected Output: "error"
+    repr_convert('S', 'X', 0x12345678); // Invalid target representation,Expected Output: "error"
+ */
