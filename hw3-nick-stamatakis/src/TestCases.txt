@@ -1,0 +1,372 @@
+
+int main(){
+//    printf("\n\n");
+//    printf("---------strPtc.c---------\n");
+//
+//    // Test for strgLen
+//    char sbu[] = "Stony Brook";
+//    char cse[] = "CSE 220";
+//    char c[] = "C";
+//    char sys[] = "System Fundamental";
+//    char one[] = "1";
+//    char empty[] = "";
+//    printf("%d\n", strgLen(sbu));
+//    printf("%d\n", strgLen(cse));
+//    printf("%d\n", strgLen(c));
+//    printf("%d\n", strgLen(sys));
+//    printf("%d\n", strgLen(one));
+//    printf("%d\n", strgLen(empty));
+//    printf("%d\n", strgLen(NULL));
+//
+//    printf("----------------------------------\n");
+//
+//    // Test for strgCopy
+//    char cs[] = "Computer Science";
+//    char cs2[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+//    strgCopy(cs, cs2);
+//
+//    char cse220[] = "CSE-220";
+//    char cse2202[] = "aaaaaaa";
+//    strgCopy(cse220, cse2202);
+//
+//    char sysfun[] = "System Fundamental";
+//    char sysfun2[] = "aaaaaaaaaaaaaaaaaa";
+//    strgCopy(sysfun, sysfun2);
+//
+//    char onee[] = "1";
+//    char onee2[] = "a";
+//    strgCopy(onee, onee2);
+//
+//    char mt[] = "";
+//    char mt2[] = "a";
+//    strgCopy(mt, mt2);
+//
+//    printf("%s\n", cs2);
+//    printf("%s\n", cse2202);
+//    printf("%s\n", sysfun2);
+//    printf("%s\n", onee2);
+//    printf("%s\n", mt2);
+//    //Test Space issue
+//    char test_size[] = "aaaa";
+//    strgCopy(cs, test_size);
+//    printf("%s\n", test_size);
+//
+//
+//    printf("----------------------------------\n");
+//
+//    // Test for strgChangeCase
+//    strgChangeCase(sbu);
+//    printf("%s\n", sbu);
+//
+//    char css[] = "CSE220";
+//    strgChangeCase(css);
+//    printf("%s\n", css);
+//
+//    strgChangeCase(c);
+//    printf("%s\n", c);
+//
+//    strgChangeCase(sys);
+//    printf("%s\n", sys);
+//
+//    strgChangeCase(one);
+//    printf("%s\n", one);
+//
+//    strgChangeCase(empty);
+//    printf("%s\n", empty);
+//
+//    strgChangeCase(NULL);
+//    printf("\n");
+//
+//    printf("----------------------------------\n");
+//
+//    // Test for strgDiff
+//
+//    printf("%d\n", strgDiff("Hello", "Hello"));
+//
+//    printf("%d\n", strgDiff("CSE-220", "CSE220"));
+//
+//    printf("%d\n", strgDiff("CSE220", "SE220"));
+//
+//    printf("%d\n", strgDiff("""", """"));
+//
+//    printf("----------------------------------\n");
+//
+//    // Test for strgInterleave
+//
+//    char d1[] = "aaaaaa";
+//    strgInterleave("abc", "123", d1);
+//    printf("%s\n", d1);
+//
+//    char d2[] = "aaaaaaaaa";
+//    strgInterleave("abcdef", "123", d2);
+//    printf("%s\n", d2);
+//
+//    char d3[] = "aaaaaaaa";
+//    strgInterleave("cse", "12345", d3);
+//    printf("%s\n", d3);
+//
+//    char d4[] = "aaaaaaaa";
+//    strgInterleave("1234", "cs", d4);
+//    printf("%s\n", d4);
+//
+//    char d5[] = "";
+//    strgInterleave("", "", d5);
+//    printf("%s\n", d5);
+//
+//    char d6[] = "aaa";
+//    strgInterleave("", "123", d6);
+//    printf("%s\n", d6);
+//}
+
+int main(int argc, char* argv[]){
+
+    printf("---------caesar.c---------\n");
+    printf("---------encrypt---------\n");
+
+    // Test Case 1: Encrypt an empty string
+    char a1[] = "________________________";
+    char a11[10];
+    int result1 = encrypt("", a1, 3);
+    printf("Test Case 1:\n");
+    printf("Plaintext: ''\n");
+    printf("Expected Ciphertext: 'undefined__EOM__'\n");
+    printf("Ciphertext: %s\n", a1);
+    printf("Result: %d\n\n", result1);
+
+    char a111[] = "undefined__EOM_";
+    result1 = encrypt("", a111, 3);
+    printf("Test Case 1.5:\n");
+    printf("Plaintext: ''\n");
+    printf("Expected Ciphertext: '%s'\n", a111);
+    printf("Ciphertext: %s\n", a111);
+    printf("Result: %d\n\n", result1);
+
+    // Test Case 2: Encrypt a string with uppercase letters
+    char a2[] = "________________________";
+    int result2 = encrypt("HELLO", a2, 2);
+    printf("Test Case 2:\n");
+    printf("Plaintext: 'HELLO'\n");
+    printf("Expected Ciphertext: 'JGNNQ__EOM__'\n");
+    printf("Ciphertext: %s\n", a2);
+    printf("Result: %d\n\n", result2);
+
+    // Test Case 3: Encrypt a string with lowercase letters
+    char a3[] = "________________________";
+    int result3 = encrypt("world", a3, 5);
+    printf("Test Case 3:\n");
+    printf("Plaintext: 'world'\n");
+    printf("Expected Ciphertext: 'btwqi__EOM__'\n");
+    printf("Ciphertext: %s\n", a3);
+    printf("Result: %d\n\n", result3);
+
+    // Test Case 4: Encrypt a string with mixed case letters
+    char a4[] = "________________________";
+    int result4 = encrypt("HelloWorld", a4, 1);
+    printf("Test Case 4:\n");
+    printf("Plaintext: 'HelloWorld'\n");
+    printf("Expected Ciphertext: 'IfmmpXpsme__EOM__'\n");
+    printf("Ciphertext: %s\n", a4);
+    printf("Result: %d\n\n", result4);
+
+    // Test Case 5: Encrypt a string with digits
+    char a5[] = "________________________";
+    int result5 = encrypt("12345", a5, 4);
+    printf("Test Case 5:\n");
+    printf("Plaintext: '12345'\n");
+    printf("Expected Ciphertext: '56789__EOM__'\n");
+    printf("Ciphertext: %s\n", a5);
+    printf("Result: %d\n\n", result5);
+
+    // Test Case 6: Encrypt a string with special characters
+    char a6[] = "________________________";
+    int result6 = encrypt("!@#$^&*()_+", a6, 3);
+    printf("Test Case 6:\n");
+    printf("Plaintext: '!@#$^&*()_+'\n");
+    printf("Expected Ciphertext:  undefined__EOM__'\n");
+    printf("Ciphertext: %s\n", a6);
+    printf("Result: %d\n\n", result6);
+
+    char a65[] = "____________";
+    result6 = encrypt("!@#$^&*()_+", a65, 3);
+    printf("Test Case 6.5:\n");
+    printf("Plaintext: '!@#$^&*()_+'\n");
+    printf("Expected Ciphertext: '%s'\n", a65);
+    printf("Ciphertext: %s\n", a65);
+    printf("Result: %d\n\n", result6);
+
+    // Test Case 7: Encrypt a string with spaces
+    char a7[] = "________________________";
+    int result7 = encrypt("Hello World!", a7, 6);
+    printf("Test Case 7:\n");
+    printf("Plaintext: 'Hello World!'\n");
+    printf("Expected Ciphertext: 'Nkrru Cuxrj!__EOM__'\n");
+    printf("Ciphertext: %s\n", a7);
+    printf("Result: %d\n\n", result7);
+
+    // Test Case 8: Encrypt a string with a long key
+    char a8[] = "________________________";
+    int result8 = encrypt("Test", a8, 52);
+    printf("Test Case 8:\n");
+    printf("Plaintext: 'Test'\n");
+    printf("Expected Ciphertext: 'Test__EOM__'\n");
+    printf("Ciphertext: %s\n", a8);
+    printf("Result: %d\n\n", result8);
+
+    char a9[] = "aaaaaaaaaa";
+    result8 = encrypt("Test", a9, 26);
+    printf("Test Case 10:\n");
+    printf("Plaintext: 'Test'\n");
+    printf("Expected Ciphertext: '%s'\n", a9);
+    printf("Ciphertext: %s\n", a9);
+    printf("Result: %d\n\n", result8);
+
+    char a10[] = "aaaaaaaaaa";
+    result8 = encrypt("Test", NULL, 26);
+    printf("Test Case 11:\n");
+    printf("Plaintext: 'Test'\n");
+    printf("Expected Ciphertext: '%s'\n", a10);
+    printf("Ciphertext: %s\n", a10);
+    printf("Result: %d\n\n", result8);
+
+    printf("---------decrypt---------\n");
+    printf("---------decrypt---------\n");
+    printf("---------decrypt---------\n");
+    printf("---------decrypt---------\n");
+
+    // Test Case 1: Decrypt an empty ciphertext
+    char b1[] = "_________";
+    result1 = decrypt("__EOM__", b1, 3);
+    printf("Test Case 1:\n");
+    printf("Ciphertext: '__EOM__'\n");
+    printf("Expected Plaintext: 'undefined'\n");
+    printf("Plaintext: %s\n", b1);
+    printf("Result: %d\n\n", result1);
+
+    char b15[] = "____";
+    result1 = decrypt("__EOM__", b15, 3);
+    printf("Test Case 1.5:\n");
+    printf("Ciphertext: '__EOM__'\n");
+    printf("Expected Plaintext: ''\n");
+    printf("Plaintext: %s\n", b15);
+    printf("Result: %d\n\n", result1);
+
+    // Test Case 2: Decrypt a ciphertext with uppercase letters
+    char b2[] = "_";
+    result2 = decrypt("JGNNQ__EOM__", b2, 2);
+    printf("Test Case 2:\n");
+    printf("Ciphertext: 'JGNNQ__EOM__'\n");
+    printf("Expected Plaintext: 'H'\n");
+    printf("Plaintext: %s\n", b2);
+    printf("Result: %d\n\n", result2);
+
+    // Test Case 3: Decrypt a ciphertext with lowercase letters
+    char b3[] = "___";
+    result3 = decrypt("rjmgi__EOM__", b3, 5);
+    printf("Test Case 3:\n");
+    printf("Ciphertext: 'rjmgi__EOM__'\n");
+    printf("Expected Plaintext: 'meh'\n");
+    printf("Plaintext: %s\n", b3);
+    printf("Result: %d\n\n", result3);
+
+    // Test Case 4: Decrypt a ciphertext with mixed case letters
+    char b4[] = "_________";
+    result4 = decrypt("GdkknVnqkc__EOM__", b4, 1);
+    printf("Test Case 4:\n");
+    printf("Ciphertext: 'GdkknVnqkc__EOM__'\n");
+    printf("Expected Plaintext: 'FcjjmUmpj'\n");
+    printf("Plaintext: %s\n", b4);
+    printf("Result: %d\n\n", result4);
+
+    // Test Case 5: Decrypt a ciphertext with digits
+    char b5[] = "__________________________";
+    result5 = decrypt("56789__EOM__abbbb__EOM__", b5, 4);
+    printf("Test Case 5:\n");
+    printf("Ciphertext: '56789__EOM__abbbb__EOM__'\n");
+    printf("Expected Plaintext: '12345'\n");
+    printf("Plaintext: %s\n", b5);
+    printf("Result: %d\n\n", result5);
+
+    // Test Case 6: Decrypt a ciphertext with special characters
+    char b6[] = "_____________________________________";
+    result6 = decrypt("!D#$*&^_*____EOM__ab*__EOM__", b6, 0);
+    printf("Test Case 6:\n");
+    printf("Ciphertext: '!D#$*&^_*____EOM__ab*__EOM__'\n");
+    printf("Expected Plaintext: '!D#$*&^_*__'\n");
+    printf("Plaintext: %s\n", b6);
+    printf("Result: %d\n\n", result6);
+
+    char b66[] = "_____________________________________";
+    result6 = decrypt("!D#$*&^_*__EOM_ab*__EOM__aa", b66, 0);
+    printf("Test Case 6.5:\n");
+    printf("Ciphertext: '!D#$*&^_*__EOM_ab*__EOM__aa'\n");
+    printf("Expected Plaintext: '!D#$*&^_*__EOM_ab*'\n");
+    printf("Plaintext: %s\n", b66);
+    printf("Result: %d\n\n", result6);
+
+    // Test Case 7: Decrypt a ciphertext with spaces
+    char b7[] = "________";
+    result7 = decrypt("Nssu   Uyotk!__EOM__", b7, 6);
+    printf("Test Case 7:\n");
+    printf("Ciphertext: 'Nssu   Uyotk__EOM__!'\n");
+    printf("Expected Plaintext: 'Hmmo   O'\n");
+    printf("Plaintext: %s\n", b7);
+    printf("Result: %d\n\n", result7);
+
+    // Test Case 8: Decrypt a ciphertext with a long key
+    char b8[] = "__";
+    result8 = decrypt("Test__EOM__", b8, 26);
+    printf("Test Case 8:\n");
+    printf("Ciphertext: 'Test__EOM__'\n");
+    printf("Expected Plaintext: 'Te'\n");
+    printf("Plaintext: %s\n", b8);
+    printf("Result: %d\n\n", result8);
+
+    char b23[] = "___________";
+    result8 = decrypt("Test__EOM_", b23, 0);
+    printf("Test Case 9:\n");
+    printf("Ciphertext: 'Test__EOM_'\n");
+    printf("Expected Plaintext: '___________'\n");
+    printf("Plaintext: %s\n", b23);
+    printf("Result: %d\n\n", result8);
+
+    char b24[] = "________________________";
+    result8 = decrypt("Test___EOM__", b24, 0);
+    printf("Test Case 9.5:\n");
+    printf("Ciphertext: 'Test___EOM__'\n");
+    printf("Expected Plaintext: 'Test_'\n");
+    printf("Plaintext: %s\n", b24);
+    printf("Result: %d\n\n", result8);
+
+    // Test Case 10: Decrypt a ciphertext with a key exceeding 26
+    char b9[] = "aaaaaaa";
+    int result10 = decrypt("Ahiielii__EOM__", b9, 30);
+    printf("Test Case 10:\n");
+    printf("Ciphertext: 'Ahiielii'\n");
+    printf("Expected Plaintext: 'Wdeeahe'\n");
+    printf("Plaintext: %s\n", b9);
+    printf("Result: %d\n\n", result10);
+
+    char b10[] = "aaaaaaaaaaaa";
+    result10 = decrypt("@#!__EOM__", b10, 30);
+    printf("Test Case 11:\n");
+    printf("Ciphertext: '@#!__EOM__'\n");
+    printf("Expected Plaintext: 'undefined'\n");
+    printf("Plaintext: %s\n", b10);
+    printf("Result: %d\n\n", result10);
+
+    char b13[] = "aaaaaaaaaaaaaaaaaaaaaaa";
+    result10 = decrypt("undefined__EOM__", b13, 1);
+    printf("Test Case 12:\n");
+    printf("Ciphertext: 'undefined__EOM__'\n");
+    printf("Expected Plaintext: 'tmcdehmdc'\n");
+    printf("Plaintext: %s\n", b13);
+    printf("Result: %d\n\n", result10);
+
+    result10 = decrypt("malik__EOM__", NULL, 0);
+    printf("Test Case 13 (Last Test Cases Fuckers):\n");
+    printf("Ciphertext: 'malik__EOM__'\n");
+    printf("Expected Plaintext: 'Nick is a bitch'\n");
+    printf("Plaintext: %s\n", "Nick is a bitch");
+    printf("Result: %d\n\n", result10);
+}
+
